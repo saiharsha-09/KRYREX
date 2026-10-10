@@ -1,0 +1,593 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#030303">
+<title>KRYREX — Beyond Reality</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#e9c878;--white:#fff8e9;--black:#030303}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:white;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:5;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E")}
+#universe{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+nav{position:absolute;top:0;width:100%;padding:27px 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff12;z-index:10}
+.logo{font-size:22px;font-weight:800;letter-spacing:6px;color:var(--gold)}
+.navlinks{display:flex;align-items:center;gap:32px}
+.navlinks a{color:#aaa;text-decoration:none;font-size:11px;letter-spacing:2px}
+.navlinks a:hover{color:var(--gold)}
+.pill{padding:12px 18px;border:1px solid #e9c87870;background:#e9c87809;color:var(--gold);font-size:10px;letter-spacing:2px;cursor:pointer;transition:.3s}
+.pill:hover{background:var(--gold);color:#000;box-shadow:0 0 30px #e9c87850}
+.hero{position:relative;z-index:1;min-height:100svh;display:flex;flex-direction:column;align-items:center;text-align:center;padding:120px 20px 55px;overflow:hidden}
+.kicker{font-size:10px;letter-spacing:6px;color:var(--gold);margin-top:20px;animation:fade .9s both}
+.core-wrap{position:relative;width:min(77vw,570px);height:min(77vw,570px);max-height:570px;display:grid;place-items:center;margin:0 auto -4px;perspective:1000px;isolation:isolate}
+.core-wrap:before{content:"";position:absolute;width:80%;height:80%;border-radius:50%;background:radial-gradient(circle,#e9b64a15 0%,#b57b2420 25%,#6d3c170a 52%,transparent 70%);filter:blur(24px);animation:breath 4s ease-in-out infinite}
+.core-wrap:after{content:"";position:absolute;width:52%;height:52%;border-radius:50%;background:radial-gradient(circle,#fff9df16,transparent 68%);filter:blur(18px)}
+#core{width:100%;height:100%;position:relative;z-index:1;overflow:visible;filter:drop-shadow(0 0 28px #d89b3440)}
+.core-label{position:absolute;bottom:8%;left:50%;transform:translateX(-50%);white-space:nowrap;color:#d8c59d;font-size:9px;letter-spacing:4px;z-index:3}
+h1{font-size:clamp(45px,8vw,96px);line-height:1.02;font-weight:500;letter-spacing:-4px;margin-top:-5px;animation:fade 1.1s .15s both}
+h1 span{background:linear-gradient(110deg,#fff8d9 5%,#e6c06a 38%,#a77a2f 65%,#fff0b6 88%);background-clip:text;-webkit-background-clip:text;color:transparent}
+.sub{font-size:13px;line-height:2;color:#96918a;max-width:460px;margin:24px auto 28px;animation:fade 1.2s .3s both}
+.actions{display:flex;justify-content:center;gap:13px;flex-wrap:wrap}
+.btn{padding:16px 23px;border:1px solid #e9c87880;color:var(--gold);background:#e9c8780b;font-size:10px;letter-spacing:2px;cursor:pointer;transition:.3s}
+.btn.primary{background:linear-gradient(110deg,#f0d58d,#c19a4d);color:#100c05;border:0;font-weight:700}
+.btn:hover{transform:translateY(-3px);box-shadow:0 0 32px #e9c87832}
+.meta{margin-top:39px;font-size:9px;letter-spacing:3px;color:#777}
+.dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:#e9c878;box-shadow:0 0 10px #e9c878;margin-right:9px}
+.section{position:relative;z-index:1;padding:110px 8%;border-top:1px solid #ffffff12;background:linear-gradient(180deg,#030303bd,#030303f5)}
+.heading{text-align:center;margin-bottom:55px}
+.heading small{color:var(--gold);letter-spacing:5px;font-size:10px}
+.heading h2{font-size:clamp(30px,4vw,52px);font-weight:400;margin:20px 0}
+.heading p{font-size:13px;color:#888}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1150px;margin:auto}
+.card{padding:35px 28px;min-height:220px;background:linear-gradient(140deg,#ffffff0b,#ffffff02);border:1px solid #ffffff16;transition:.35s}
+.card:hover{transform:translateY(-6px);border-color:#e9c87880;background:#e9c87809}
+.num{font-size:10px;letter-spacing:3px;color:var(--gold)}
+.card h3{font-size:21px;font-weight:400;margin:28px 0 15px}
+.card p{font-size:13px;line-height:1.9;color:#929292}
+.final{text-align:center;position:relative;z-index:1;padding:125px 20px}
+.final h2{font-size:clamp(36px,6vw,70px);font-weight:400;letter-spacing:-2px}
+.final h2 span{color:var(--gold)}
+.final p{margin:20px 0 30px;color:#999;font-size:13px}
+footer{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding:25px 7%;border-top:1px solid #ffffff15;font-size:9px;letter-spacing:2px;color:#777}
+@keyframes fade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes breath{0%,100%{transform:scale(.9);opacity:.65}50%{transform:scale(1.12);opacity:1}}
+@media(max-width:700px){nav{padding:22px 5%}.logo{font-size:18px;letter-spacing:4px}.navlinks{gap:13px}.navlinks a{display:none}.hero{padding-top:110px}.core-wrap{width:94vw;height:94vw;max-height:none;margin-bottom:0}h1{letter-spacing:-2px}.sub{font-size:12px}.section{padding:80px 6%}.cards{grid-template-columns:1fr}.card{min-height:180px}.final{padding:85px 20px}footer{padding:24px 6%}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;scroll-behavior:auto!important}}
+
+.planner-section{position:relative;z-index:2;padding:70px 6%;background:#090806;border-block:1px solid #80643b}
+.planner-shell{max-width:800px;margin:auto;padding:28px;border:1px solid #80643b;border-radius:18px;background:#0b0b0d}
+.planner-shell h2{font-size:clamp(30px,5vw,48px)}
+.planner-shell h2 span{color:#e6bd72}
+.planner-form{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.planner-field{display:flex;flex-direction:column;gap:8px}
+.planner-field label{color:#e6bd72;font-size:11px;letter-spacing:2px}
+.planner-field input,.planner-field select,.planner-field textarea{box-sizing:border-box;width:100%;padding:13px;background:#090909;color:white;border:1px solid #51432d;border-radius:8px}
+.planner-field textarea{min-height:80px}
+.planner-field.full,.planner-form button{grid-column:1/-1}
+.planner-form button{padding:15px;border:0;border-radius:30px;background:linear-gradient(90deg,#f2d99e,#c99442);font-weight:bold;cursor:pointer}
+#plannerStatus{color:#e6bd72;margin-top:15px}
+#plannerResult{display:none;white-space:pre-wrap;line-height:1.7;color:#eee;border:1px solid #51432d;padding:18px;margin-top:15px;overflow-wrap:anywhere}
+#plannerResult.show{display:block}
+@media(max-width:600px){.planner-form{grid-template-columns:1fr}.planner-field.full,.planner-form button{grid-column:auto}}
+
+
+/* KRYREX interactive study checklist */
+.plan-checklist{display:grid;gap:18px;text-align:left}
+.plan-progress{padding:16px;border:1px solid #51432d;border-radius:12px;background:#11100e}
+.plan-progress-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#e6bd72;font-size:12px;letter-spacing:1px}
+.plan-progress-track{height:7px;background:#30291e;border-radius:10px;overflow:hidden;margin-top:12px}
+#planProgressFill{height:100%;width:0;background:linear-gradient(90deg,#a77a30,#f6d98b);transition:width .25s}
+.plan-task-list{display:grid;gap:10px}
+.plan-task{display:flex;align-items:flex-start;gap:12px;padding:13px;border:1px solid #393329;border-radius:10px;background:#11110f;color:#eee;line-height:1.6;cursor:pointer}
+.plan-task input{accent-color:#e6bd72;width:18px;height:18px;flex-shrink:0;margin-top:3px}
+.plan-task:has(input:checked){opacity:.65}
+.plan-task:has(input:checked) span{text-decoration:line-through}
+.plan-section-title{color:#e6bd72;font-size:14px;letter-spacing:1px;margin:18px 0 4px}
+
+
+/* KRYREX planner - refined layout */
+.planner-section{padding:clamp(42px,7vw,84px) 18px}
+.planner-shell{box-sizing:border-box;width:100%;max-width:760px;margin:0 auto;padding:clamp(20px,4vw,36px);overflow:hidden}
+.planner-shell>p{line-height:1.7}
+.planner-form{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 18px;margin-top:28px}
+.planner-field{min-width:0;gap:9px}
+.planner-field label{font-size:10px;letter-spacing:1.6px}
+.planner-field input,.planner-field select,.planner-field textarea{font:inherit;font-size:14px;min-width:0;min-height:48px;padding:14px 15px;outline:none;transition:border-color .2s,box-shadow .2s}
+.planner-field input:focus,.planner-field select:focus,.planner-field textarea:focus{border-color:#e6bd72;box-shadow:0 0 0 3px #e6bd7218}
+.planner-field select{appearance:auto;cursor:pointer}
+.planner-field textarea{min-height:105px;resize:vertical}
+.planner-form button{min-height:52px;letter-spacing:1px;transition:transform .2s,filter .2s}
+.planner-form button:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.planner-form button:disabled{opacity:.65;cursor:wait;transform:none}
+#plannerStatus{font-size:13px;line-height:1.6}
+#plannerResult{white-space:normal;overflow-wrap:anywhere;padding:0;border:0;background:transparent}
+#plannerResult.show{display:block}
+.plan-checklist{gap:16px}
+.plan-progress{padding:18px}
+.plan-task-list{gap:9px}
+.plan-task{box-sizing:border-box;min-width:0;padding:15px 16px;align-items:flex-start;gap:12px;font-size:14px;line-height:1.65;transition:border-color .2s,background .2s}
+.plan-task:hover{border-color:#80643b;background:#17140f}
+.plan-task input{flex:0 0 18px;margin:3px 0 0;cursor:pointer}
+.plan-task span{min-width:0;overflow-wrap:anywhere}
+.plan-section-title{margin:22px 0 8px;font-size:12px;line-height:1.5;letter-spacing:1.5px}
+@media(max-width:600px){
+ .planner-section{padding:42px 14px}
+ .planner-shell{padding:21px 16px;border-radius:14px}
+ .planner-form{grid-template-columns:minmax(0,1fr);gap:18px}
+ .planner-field.full,.planner-form button{grid-column:1}
+ .plan-progress-top{font-size:11px}
+ .plan-task{padding:13px}
+}
+
+
+/* KRYREX glass study workspace */
+#plannerResult.show{display:block;white-space:normal;border:0;padding:0;background:transparent}
+.kx-workspace{display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:18px;margin-top:20px}
+.kx-panel{min-width:0;padding:22px;border:1px solid #b99a624d;border-radius:20px;background:linear-gradient(145deg,#ffffff0b,#ffffff03);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 18px 55px #0006}
+.kx-eyebrow{font-size:10px;letter-spacing:2.5px;color:#e6bd72;text-transform:uppercase}
+.kx-panel h3{font-size:21px;margin:10px 0 18px;color:#f8edda}
+.kx-task{display:flex;gap:11px;align-items:flex-start;padding:13px;margin:9px 0;border:1px solid #ffffff12;border-radius:12px;background:#ffffff05;color:#ddd;font-size:13px;line-height:1.6;cursor:pointer}
+.kx-task input{accent-color:#e6bd72;margin-top:4px;flex-shrink:0}
+.kx-task:has(input:checked){color:#a99b81;background:#e6bd720b}
+.kx-track{height:5px;background:#ffffff12;border-radius:9px;overflow:hidden;margin:12px 0}
+.kx-track div{height:100%;width:0;background:linear-gradient(90deg,#b78536,#ffe4a3);transition:width .3s}
+.kx-lesson{min-height:220px;padding:22px 0;animation:kxIn .25s ease}
+.kx-lesson h4{font-size:clamp(21px,3vw,30px);line-height:1.25;color:#f7dfac;margin:12px 0}
+.kx-lesson p{font-size:14px;line-height:1.9;color:#c9c4ba;white-space:pre-wrap}
+.kx-nav{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:14px}
+.kx-nav button,.kx-sound{border:1px solid #b99a6270;background:#ffffff08;color:#f4d79d;border-radius:30px;padding:11px 15px;cursor:pointer}
+.kx-nav button:disabled{opacity:.3;cursor:default}
+.kx-count{font-size:11px;color:#aaa}
+.kx-sound{font-size:10px;letter-spacing:1px;margin-top:12px}
+@keyframes kxIn{from{opacity:.3;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:650px){.kx-workspace{grid-template-columns:1fr}.kx-panel{padding:17px}}
+
+</style>
+</head>
+
+<body>
+<canvas id="universe"></canvas>
+
+<nav>
+  <div class="logo">KRYREX<span style="color:#fff">.</span></div>
+  <div class="navlinks">
+    <a href="#vision">VISION</a>
+    <a href="#systems">SYSTEMS</a>
+    <button class="pill" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">EXPLORE ↗</button>
+  </div>
+</nav>
+
+<main>
+<section class="hero" id="vision">
+  <div class="kicker">AN UNIVERSE BEYOND LIMITS</div>
+
+  <div class="core-wrap" id="coreWrap">
+    <canvas id="core"></canvas>
+    <div class="core-label">INFINITE ENERGY · ONE CORE</div>
+  </div>
+
+  <h1>Beyond <span>Reality.</span></h1>
+  <p class="sub">Where intelligence meets imagination. Enter a new dimension of technology, creation and possibilities without boundaries.</p>
+  <div class="actions">
+    <button class="btn primary" onclick="document.querySelector('#systems').scrollIntoView({behavior:'smooth'})">ENTER THE UNIVERSE ↗</button>
+    <button class="btn" onclick="toggleEnergy()" id="energyBtn">ENERGY: ACTIVE ◉</button>
+  </div>
+  <div class="meta"><span class="dot"></span>ENGINEERED FOR THE UNKNOWN</div>
+</section>
+
+<section class="section" id="systems">
+  <div class="heading">
+    <small>THE KRYREX PHILOSOPHY</small>
+    <h2>Not just another dimension.</h2>
+    <p>A different way to imagine what comes next.</p>
+  </div>
+  <div class="cards">
+    <article class="card"><div class="num">01 / DISCOVER</div><h3>Beyond Boundaries</h3><p>Explore ambitious ideas and discover new perspectives beyond the ordinary.</p></article>
+    <article class="card"><div class="num">02 / CREATE</div><h3>Intelligence in Motion</h3><p>Bring creativity and technology together in an evolving digital universe.</p></article>
+    <article class="card"><div class="num">03 / EVOLVE</div><h3>Tomorrow, Reimagined</h3><p>Think bigger, experiment boldly and build toward possibilities still unseen.</p></article>
+  </div>
+</section>
+
+
+<section class="planner-section" id="ai-planner">
+<div class="planner-shell">
+<p style="color:#e6bd72;letter-spacing:3px">KRYREX INTELLIGENCE</p>
+<h2>Your goals.<br><span>Engineered into a plan.</span></h2>
+<p style="color:#aaa">Your personal AI study planner.</p>
+<form class="planner-form" id="plannerForm">
+<div class="planner-field"><label>SUBJECT</label><input name="subject" placeholder="Python, Physics..." required></div>
+<div class="planner-field"><label>HOURS PER DAY</label><select name="hours"><option>1 hour</option><option selected>2 hours</option><option>3 hours</option><option>4 hours</option><option>5+ hours</option></select></div>
+<div class="planner-field"><label>LEVEL</label><select name="level"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div>
+<div class="planner-field full"><label>YOUR GOAL</label><textarea name="goal" placeholder="What do you want to achieve?" required></textarea></div>
+<button id="planSubmit" type="submit">GENERATE MY AI STUDY PLAN ↗</button>
+</form>
+<div id="plannerStatus" role="status"></div>
+<div id="plannerResult"></div>
+</div>
+</section>
+
+<section class="final" id="contact">
+  <div class="heading"><small>THE NEXT FRONTIER</small></div>
+  <h2>The unknown is <span>calling.</span></h2>
+  <p>Every universe begins with an idea.</p>
+  <button class="btn primary" onclick="window.scrollTo({top:0,behavior:'smooth'})">RETURN TO THE CORE ↑</button>
+</section>
+</main>
+
+<footer><span class="logo" style="font-size:14px">KRYREX.</span><span>BEYOND THE ORDINARY</span><span>© <span id="year"></span> KRYREX</span></footer>
+
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const coarse=window.matchMedia('(pointer: coarse)').matches;
+let energy=true,mouseX=0,mouseY=0,scrollP=0;
+const uni=document.getElementById('universe'),u=uni.getContext('2d');
+const core=document.getElementById('core'),c=core.getContext('2d');
+let W=innerWidth,H=innerHeight,D=Math.min(devicePixelRatio||1,2),stars=[],sparks=[],ribbons=[];
+const rand=(a,b)=>a+Math.random()*(b-a);
+function resize(){
+ W=innerWidth;H=innerHeight;D=Math.min(devicePixelRatio||1,2);
+ uni.width=W*D;uni.height=H*D;u.setTransform(D,0,0,D,0,0);
+ let rect=core.getBoundingClientRect();
+ core.width=Math.max(1,Math.round(rect.width*D));core.height=Math.max(1,Math.round(rect.height*D));
+ c.setTransform(D,0,0,D,0,0);
+ stars=Array.from({length:Math.min(430,Math.round(W*H/2600))},()=>({x:rand(0,W),y:rand(0,H),r:rand(.3,1.7),a:rand(.15,.8),p:rand(0,7)}));
+ sparks=Array.from({length:Math.min(180,Math.round(W/5))},()=>({a:rand(0,Math.PI*2),r:rand(45,240),speed:rand(.002,.012),size:rand(.4,2),life:rand(0,1),trail:rand(5,35)}));
+ ribbons=Array.from({length:9},()=>({a:rand(0,7),speed:rand(.002,.009),r:rand(.24,.47),w:rand(.5,1.8),phase:rand(0,7)}));
+}
+window.addEventListener('resize',resize);
+if(!coarse)window.addEventListener('pointermove',e=>{mouseX=(e.clientX/W-.5);mouseY=(e.clientY/H-.5)},{passive:true});
+window.addEventListener('scroll',()=>{scrollP=scrollY/Math.max(1,document.body.scrollHeight-H)},{passive:true});
+
+let last=0,t=0;
+function draw(now){
+ requestAnimationFrame(draw);
+ if(!energy)return;
+ if(now-last<30)return;
+ last=now;t=reduceMotion?1:now*.001;
+ u.clearRect(0,0,W,H);
+ let bg=u.createRadialGradient(W*.5,H*.43,0,W*.5,H*.43,Math.max(W,H)*.75);
+ bg.addColorStop(0,'rgba(85,52,19,.105)');bg.addColorStop(.5,'rgba(32,23,16,.045)');bg.addColorStop(1,'rgba(0,0,0,0)');
+ u.fillStyle=bg;u.fillRect(0,0,W,H);
+
+ for(const s of stars){
+  let tw=.5+.5*Math.sin(t*1.4+s.p);
+  u.globalAlpha=s.a*tw;
+  u.fillStyle=s.r>1.35?'#ffeac0':'#d5c7a7';
+  u.beginPath();u.arc(s.x,s.y,s.r,0,Math.PI*2);u.fill();
+  if(s.r>1.5&&tw>.9){u.globalAlpha=.13;u.fillRect(s.x-5,s.y,.01+10,.5);u.fillRect(s.x,s.y-5,.5,10)}
+ }
+ u.globalAlpha=1;
+
+ // Distant galactic spiral arms
+ u.save();u.translate(W*.5+mouseX*22,H*.48+mouseY*14);
+ for(let arm=0;arm<4;arm++){
+  u.beginPath();
+  for(let i=0;i<210;i++){
+   let f=i/209,ang=f*7.8+t*.05+arm*Math.PI/2;
+   let r=f*Math.min(W,H)*.46;
+   let x=Math.cos(ang)*r,y=Math.sin(ang)*r*.54;
+   if(i===0)u.moveTo(x,y);else u.lineTo(x,y);
+  }
+  u.strokeStyle=arm%2?'rgba(197,151,76,.035)':'rgba(255,223,159,.05)';
+  u.lineWidth=1;u.stroke();
+ }
+ u.restore();
+
+ // Floating sparks and elongated trails
+ for(const p of sparks){
+  p.a+=p.speed*(reduceMotion?.1:1);
+  p.life+=.002;
+  if(p.life>1){p.life=0;p.r=rand(45,Math.min(W,H)*.43)}
+  let cx=W*.5+mouseX*30,cy=H*.46+mouseY*22;
+  let ang=p.a;
+  let x=cx+Math.cos(ang)*p.r;
+  let y=cy+Math.sin(ang)*p.r*.62;
+  let dx=-Math.sin(ang)*p.trail,dy=Math.cos(ang)*p.trail*.62;
+  let gr=u.createLinearGradient(x-dx,y-dy,x,y);
+  gr.addColorStop(0,'rgba(230,177,83,0)');
+  gr.addColorStop(1,`rgba(255,224,153,${.15+.7*Math.abs(Math.sin(p.a*2))})`);
+  u.strokeStyle=gr;u.lineWidth=p.size;u.beginPath();u.moveTo(x-dx,y-dy);u.lineTo(x,y);u.stroke();
+  u.fillStyle='#fff0c8';u.globalAlpha=.3+.7*Math.abs(Math.sin(p.a*2.7));
+  u.beginPath();u.arc(x,y,p.size*.8,0,Math.PI*2);u.fill();
+ }
+ u.globalAlpha=1;
+
+ // Main luminous orbital core
+ const cw=core.width/D,ch=core.height/D,cx=cw/2,cy=ch/2,R=Math.min(cw,ch)*.29;
+ c.clearRect(0,0,cw,ch);
+ c.save();c.translate(cx,cy);
+ const glow=c.createRadialGradient(0,0,0,0,0,R*2.2);
+ glow.addColorStop(0,'rgba(255,233,179,.21)');
+ glow.addColorStop(.25,'rgba(235,171,65,.15)');
+ glow.addColorStop(.65,'rgba(176,102,28,.055)');
+ glow.addColorStop(1,'rgba(0,0,0,0)');
+ c.fillStyle=glow;c.beginPath();c.arc(0,0,R*2.2,0,Math.PI*2);c.fill();
+
+ // Spinning ellipses, with variable inclinations
+ for(let i=0;i<7;i++){
+  let angle=t*(.17+i*.035)+i*1.04;
+  c.save();c.rotate(angle);
+  c.beginPath();c.ellipse(0,0,R*(1.05+(i%3)*.17),R*(.23+(i%4)*.055),i*.24,0,Math.PI*2);
+  c.strokeStyle=i%2?'rgba(227,184,99,.48)':'rgba(255,246,213,.3)';
+  c.lineWidth=i===2?1.7:.8;c.stroke();
+  for(let j=0;j<3;j++){
+   let a=t*(.8+j*.16)+i*2+j*2.09;
+   let x=Math.cos(a)*R*(1.05+(i%3)*.17),y=Math.sin(a)*R*(.23+(i%4)*.055);
+   c.fillStyle=j===0?'#fff7db':'#e6b65f';
+   c.shadowColor='#ffc85f';c.shadowBlur=12;
+   c.beginPath();c.arc(x,y,j===0?2.2:1.2,0,Math.PI*2);c.fill();c.shadowBlur=0;
+  }
+  c.restore();
+ }
+ // Golden plasma shell
+ let sphere=c.createRadialGradient(-R*.3,-R*.38,R*.04,0,0,R);
+ sphere.addColorStop(0,'#fffce9');
+ sphere.addColorStop(.12,'#f5dfa1');
+ sphere.addColorStop(.3,'#dca54a');
+ sphere.addColorStop(.52,'#80501e');
+ sphere.addColorStop(.7,'#24180f');
+ sphere.addColorStop(.82,'#c28c39');
+ sphere.addColorStop(.88,'#fff0b8');
+ sphere.addColorStop(1,'rgba(255,197,89,.02)');
+ c.fillStyle=sphere;c.beginPath();c.arc(0,0,R,0,Math.PI*2);c.fill();
+
+ // Spiralling filaments inside the core
+ c.save();c.beginPath();c.arc(0,0,R*.96,0,Math.PI*2);c.clip();
+ for(let arm=0;arm<5;arm++){
+  c.beginPath();
+  for(let i=0;i<360;i++){
+   let f=i/359,ang=f*9+t*(arm%2?.45:-.3)+arm*Math.PI*2/5;
+   let rr=R*(.04+f*.9);
+   let x=Math.cos(ang)*rr,y=Math.sin(ang)*rr;
+   if(!i)c.moveTo(x,y);else c.lineTo(x,y);
+  }
+  c.strokeStyle=arm%2?'rgba(255,242,192,.68)':'rgba(255,179,65,.72)';
+  c.lineWidth=1.2;c.stroke();
+ }
+ for(let i=0;i<90;i++){
+  let a=i*2.4+t*.2,rr=R*rand(.2,.92);
+  c.fillStyle=i%3?'rgba(255,225,158,.6)':'rgba(255,255,240,.9)';
+  c.beginPath();c.arc(Math.cos(a)*rr,Math.sin(a)*rr,rand(.3,1.2),0,Math.PI*2);c.fill();
+ }
+ c.restore();
+
+ // White-gold nucleus
+ const nucleus=c.createRadialGradient(-R*.05,-R*.06,0,0,0,R*.31);
+ nucleus.addColorStop(0,'#ffffff');nucleus.addColorStop(.2,'#fff5cf');nucleus.addColorStop(.55,'#f1c36d');nucleus.addColorStop(1,'rgba(255,194,82,0)');
+ c.fillStyle=nucleus;c.beginPath();c.arc(0,0,R*.4,0,Math.PI*2);c.fill();
+
+ // Erupting rays
+ for(let i=0;i<60;i++){
+  let a=i*2.399+t*(i%2?.3:-.24),inner=R*(.95+(i%7)*.02),outer=inner+R*(.05+(i%9)*.075);
+  c.strokeStyle=i%5===0?'rgba(255,249,216,.9)':'rgba(244,185,86,.33)';
+  c.lineWidth=i%7===0?1.2:.45;
+  c.beginPath();c.moveTo(Math.cos(a)*inner,Math.sin(a)*inner);c.lineTo(Math.cos(a)*outer,Math.sin(a)*outer);c.stroke();
+ }
+ c.restore();
+
+ if(!reduceMotion){
+  const el=document.getElementById('coreWrap');
+  el.style.transform=`translate3d(${mouseX*7}px,${mouseY*6}px,0)`;
+ }
+}
+resize();requestAnimationFrame(draw);
+
+function toggleEnergy(){
+ energy=!energy;
+ document.getElementById('energyBtn').textContent=energy?'ENERGY: ACTIVE ◉':'ENERGY: PAUSED ○';
+ if(energy)requestAnimationFrame(draw);
+ else{u.clearRect(0,0,W,H);c.clearRect(0,0,core.width,core.height)}
+}
+
+
+
+function renderChecklist(plan) {
+  const result = document.getElementById('plannerResult');
+  result.replaceChildren();
+
+  const lines = String(plan).split(/\r?\n/);
+  const schedule = [];
+  const topics = [];
+  let section = '';
+  let currentTopic = null;
+
+  function clean(line) {
+    return line.trim()
+      .replace(/^#{1,6}\s*/, '')
+      .replace(/^\*\*(.*?)\*\*$/, '$1')
+      .replace(/^\s*(?:[-*•]\s+)+/, '')
+      .replace(/\*\*/g, '').trim();
+  }
+
+  function heading(text) {
+    return /^(?:\d+[.)]\s*)?(?:STUDY GOAL|DAILY TIMETABLE|TOPIC BREAKDOWN|WHY THIS PLAN WORKS|NEXT STEPS|PROGRESS CHECK)\s*:?\s*$/i.test(text);
+  }
+
+  for (const raw of lines) {
+    const text = clean(raw);
+    if (!text || /^[-_=*.\s]{3,}$/.test(text)) continue;
+    if (heading(text)) {
+      section = text.replace(/^\d+[.)]\s*/, '').replace(/:$/, '').toUpperCase();
+      currentTopic = null;
+      continue;
+    }
+    const time = text.match(/^((?:\d{1,2}(?::\d{2})?\s*(?:AM|PM)?\s*[-–]\s*\d{1,2}(?::\d{2})?\s*(?:AM|PM)?))\s*[:|—-]?\s*(.*)$/i);
+    if (time) {
+      schedule.push({time:time[1].trim(),text:time[2].trim() || 'Study session'});
+      continue;
+    }
+    const bullet = /^[-*•]\s+/.test(raw) || /^\d+[.)]\s+/.test(raw);
+    if (section.includes('TOPIC BREAKDOWN')) {
+      if (bullet || !currentTopic) {
+        currentTopic = {title:text.replace(/^\d+[.)]\s*/, ''),body:[]};
+        topics.push(currentTopic);
+      } else {
+        currentTopic.body.push(text);
+      }
+    } else if (section.includes('DAILY TIMETABLE')) {
+      schedule.push({time:'Study task',text});
+    } else if (!section || section.includes('STUDY GOAL')) {
+      if (topics.length === 0) topics.push({title:'Your study goal',body:[]});
+      topics[0].body.push(text);
+    } else if (topics.length) {
+      topics[topics.length-1].body.push(text);
+    }
+  }
+
+  if (!schedule.length) {
+    schedule.push({time:'SESSION 01',text:'Review the goal and learn the first concept'});
+    schedule.push({time:'SESSION 02',text:'Practise questions and review your notes'});
+  }
+  if (!topics.length) {
+    topics.push({title:'Understand the basics',body:['Start with the fundamental ideas.','Practise one example, then explain the concept in your own words.']});
+  }
+
+  const workspace = document.createElement('div');
+  workspace.className = 'kx-workspace';
+  workspace.innerHTML = `
+    <section class="kx-panel">
+      <div class="kx-eyebrow">01 / Your schedule</div>
+      <h3>Study timetable</h3>
+      <div class="kx-count" id="kx-progress">0 of ${schedule.length} completed</div>
+      <div class="kx-track"><div id="kx-fill"></div></div>
+      <div id="kx-tasks"></div>
+    </section>
+    <section class="kx-panel">
+      <div class="kx-eyebrow">02 / Learn step by step</div>
+      <h3>Topic briefing</h3>
+      <div class="kx-count" id="kx-topic-count"></div>
+      <article class="kx-lesson" id="kx-lesson" aria-live="polite"></article>
+      <div class="kx-nav">
+        <button type="button" id="kx-prev">← Previous</button>
+        <button type="button" id="kx-next">Next →</button>
+      </div>
+      <button type="button" class="kx-sound" id="kx-sound">SOUND: OFF</button>
+    </section>`;
+  result.appendChild(workspace);
+
+  const tasks = workspace.querySelector('#kx-tasks');
+  const fill = workspace.querySelector('#kx-fill');
+  const progress = workspace.querySelector('#kx-progress');
+  const lesson = workspace.querySelector('#kx-lesson');
+  const topicCount = workspace.querySelector('#kx-topic-count');
+  const prev = workspace.querySelector('#kx-prev');
+  const next = workspace.querySelector('#kx-next');
+  const soundButton = workspace.querySelector('#kx-sound');
+  let soundOn = false;
+  let topicIndex = 0;
+  let audio;
+
+  function tone(freq, duration) {
+    if (!soundOn) return;
+    try {
+      audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+      if (audio.state === 'suspended') audio.resume();
+      const oscillator = audio.createOscillator();
+      const gain = audio.createGain();
+      oscillator.type = 'sine';
+      oscillator.frequency.value = freq;
+      gain.gain.setValueAtTime(0.045, audio.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audio.currentTime + duration);
+      oscillator.connect(gain);
+      gain.connect(audio.destination);
+      oscillator.start();
+      oscillator.stop(audio.currentTime + duration);
+    } catch (_) {}
+  }
+
+  function updateProgress() {
+    const boxes = tasks.querySelectorAll('input');
+    const done = tasks.querySelectorAll('input:checked').length;
+    progress.textContent = `${done} of ${boxes.length} completed`;
+    fill.style.width = `${boxes.length ? done / boxes.length * 100 : 0}%`;
+  }
+
+  schedule.forEach((item, index) => {
+    const label = document.createElement('label');
+    label.className = 'kx-task';
+    const box = document.createElement('input');
+    box.type = 'checkbox';
+    box.addEventListener('change', () => {
+      updateProgress();
+      tone(box.checked ? 740 : 420, 0.12);
+      if (box.checked && tasks.querySelectorAll('input:checked').length === schedule.length) {
+        tone(660, 0.18);
+        setTimeout(() => tone(880, 0.24), 160);
+      }
+    });
+    const text = document.createElement('span');
+    text.textContent = `${item.time}  ·  ${item.text}`;
+    label.append(box, text);
+    tasks.appendChild(label);
+  });
+
+  function showTopic() {
+    const topic = topics[topicIndex];
+    lesson.replaceChildren();
+    const title = document.createElement('h4');
+    title.textContent = topic.title;
+    lesson.appendChild(title);
+    const body = topic.body.length ? topic.body : ['Focus on this concept, make short notes, and try one practice question.'];
+    body.forEach(line => {
+      const p = document.createElement('p');
+      p.textContent = line;
+      lesson.appendChild(p);
+    });
+    topicCount.textContent = `TOPIC ${topicIndex+1} OF ${topics.length}`;
+    prev.disabled = topicIndex === 0;
+    next.disabled = topicIndex === topics.length-1;
+  }
+
+  prev.addEventListener('click', () => {
+    if (topicIndex > 0) { topicIndex--; showTopic(); tone(500,0.1); }
+  });
+  next.addEventListener('click', () => {
+    if (topicIndex < topics.length-1) { topicIndex++; showTopic(); tone(620,0.1); }
+  });
+  soundButton.addEventListener('click', () => {
+    soundOn = !soundOn;
+    soundButton.textContent = `SOUND: ${soundOn ? 'ON' : 'OFF'}`;
+    if (soundOn) tone(660,0.12);
+  });
+  updateProgress();
+  showTopic();
+}
+
+document.getElementById('plannerForm').addEventListener('submit', async function(e) {
+e.preventDefault();
+const form = new FormData(this);
+const button = document.getElementById('planSubmit');
+const status = document.getElementById('plannerStatus');
+const result = document.getElementById('plannerResult');
+button.disabled = true;
+button.textContent = 'GENERATING...';
+status.textContent = 'KRYREX AI is thinking...';
+result.classList.remove('show');
+try {
+const response = await fetch('/api/plan', {
+method: 'POST',
+headers: {'Content-Type': 'application/json'},
+body: JSON.stringify({subject:form.get('subject'),hours:form.get('hours'),level:form.get('level'),goal:form.get('goal')})
+});
+const data = await response.json();
+if (!response.ok || !data.success) throw new Error(data.error || 'Request failed');
+renderChecklist(data.plan);
+result.classList.add('show');
+status.textContent = 'YOUR PLAN IS READY';
+} catch (err) {
+status.textContent = err.message;
+} finally {
+button.disabled = false;
+button.textContent = 'GENERATE MY AI STUDY PLAN ↗';
+}
+});
+
+</script>
+</body>
+</html>
