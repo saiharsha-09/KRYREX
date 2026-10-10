@@ -163,7 +163,177 @@ footer{position:relative;z-index:1;display:flex;justify-content:space-between;al
 .kx-task:has(input:checked){border-color:#d9b567!important;box-shadow:0 0 18px #d9b56720;transition:box-shadow .3s,border-color .3s}
 @media(prefers-reduced-motion:reduce){.kx-mission,.kx-mission-card,.kx-mission-ring,.kx-spark{animation:none;transition:none}}
 
+
+/* KRYREX 2.0 — premium liquid glass refinement */
+:root{--kx-gold:#d9b978;--kx-glass:rgba(255,255,255,.045);--kx-glass-border:rgba(231,204,151,.19)}
+html{scroll-behavior:smooth}
+nav,.kx-nav{backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%)}
+.card,.planner-shell,.kx-panel,.kx-lesson,.kx-task{background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.018))!important;border:1px solid var(--kx-glass-border)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 18px 55px rgba(0,0,0,.22);backdrop-filter:blur(24px) saturate(145%);-webkit-backdrop-filter:blur(24px) saturate(145%);transition:border-color .3s ease,background .3s ease,transform .3s ease,box-shadow .3s ease}
+.card:hover,.kx-task:hover{border-color:rgba(231,204,151,.36)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.11),0 22px 65px rgba(0,0,0,.3)}
+button,.btn,input,textarea,select{transition:all .25s ease}
+button:focus-visible,.btn:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--kx-gold);outline-offset:3px}
+input,textarea,select{background:rgba(0,0,0,.3)!important;border-color:rgba(231,204,151,.2)!important}
+::selection{background:rgba(217,185,120,.3);color:#fff}
+@media(max-width:700px){.card,.planner-shell,.kx-panel{backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+
+/* KRYREX ULTRA LIQUID GLASS */
+:root {
+  --liquid-gold: #dfc38c;
+  --liquid-edge: rgba(255, 232, 185, .24);
+  --liquid-surface: rgba(255, 255, 255, .045);
+}
+body {
+  background-color: #030303;
+}
+nav, .kx-nav, .navbar {
+  background: rgba(9, 9, 10, .55) !important;
+  border: 1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(32px) saturate(180%);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+}
+.card, .kx-panel, .planner-shell, .kx-lesson, .kx-task {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(255,255,255,.105), transparent 48%),
+    linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.018) 55%, rgba(221,190,133,.035)) !important;
+  border: 1px solid var(--liquid-edge) !important;
+  border-radius: 22px;
+  backdrop-filter: blur(30px) saturate(175%);
+  -webkit-backdrop-filter: blur(30px) saturate(175%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.19),
+    inset 1px 0 0 rgba(255,255,255,.055),
+    inset 0 -1px 0 rgba(223,195,140,.08),
+    0 20px 60px rgba(0,0,0,.34),
+    0 0 35px rgba(190,150,75,.025);
+  transition: transform .35s cubic-bezier(.2,.7,.2,1),
+              border-color .35s ease, box-shadow .35s ease;
+}
+.card::before, .kx-panel::before, .planner-shell::before,
+.kx-lesson::before, .kx-task::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(118deg,
+    rgba(255,255,255,.12) 0%,
+    rgba(255,255,255,.035) 16%,
+    transparent 36%,
+    transparent 72%,
+    rgba(223,195,140,.045) 100%);
+  opacity: .8;
+  z-index: -1;
+}
+.card:hover, .kx-panel:hover, .kx-lesson:hover, .kx-task:hover {
+  border-color: rgba(255,226,170,.38) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.23),
+    0 25px 75px rgba(0,0,0,.4),
+    0 0 32px rgba(211,174,105,.055);
+  transform: translateY(-2px);
+}
+button, .btn, input, textarea, select {
+  transition: border-color .25s ease, background .25s ease,
+              box-shadow .25s ease, transform .25s ease;
+}
+button:hover, .btn:hover {
+  border-color: rgba(255,225,170,.42);
+}
+input, textarea, select {
+  background: rgba(0,0,0,.27) !important;
+  border-color: rgba(255,232,185,.19) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+input:focus, textarea:focus, select:focus {
+  border-color: rgba(223,195,140,.65) !important;
+  box-shadow: 0 0 0 3px rgba(223,195,140,.08);
+  outline: none;
+}
+button:focus-visible, a:focus-visible, .btn:focus-visible {
+  outline: 2px solid var(--liquid-gold);
+  outline-offset: 4px;
+}
+@media(max-width:700px) {
+  .card, .kx-panel, .planner-shell, .kx-lesson, .kx-task {
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    border-radius: 18px;
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+\n
+/* KRYREX AI HUB */
+#kryrex-ai-hub{padding:76px 6%;background:radial-gradient(ellipse at 50% 0%,rgba(205,169,103,.09),transparent 55%),#070706;border-block:1px solid rgba(222,194,139,.16)}
+.kx-hub-head{max-width:760px;margin:0 auto 32px;text-align:center}
+.kx-hub-head small,.kx-hub-tag{letter-spacing:2px;color:#dfc38c;font-size:11px}
+.kx-hub-head h2{font-size:clamp(30px,5vw,52px);margin:14px 0}
+.kx-hub-head p{color:#aaa;line-height:1.7}
+.kx-hub-grid{max-width:1120px;margin:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+.kx-hub-card{position:relative;min-width:0;padding:24px;border-radius:23px;border:1px solid rgba(232,208,161,.2);background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.018));box-shadow:inset 0 1px rgba(255,255,255,.13),0 20px 60px rgba(0,0,0,.24);backdrop-filter:blur(26px) saturate(160%);-webkit-backdrop-filter:blur(26px) saturate(160%);overflow:hidden}
+.kx-hub-card:before{content:"";position:absolute;pointer-events:none;inset:0;background:linear-gradient(120deg,rgba(255,255,255,.06),transparent 38%,rgba(220,185,117,.025));border-radius:inherit}
+.kx-hub-card h3{margin:9px 0;font-size:21px;color:#f5ead5}
+.kx-hub-card p{font-size:13px;color:#aaa;line-height:1.6}
+.kx-hub-card form{display:grid;gap:11px;margin-top:17px}
+.kx-hub-card label{font-size:10px;letter-spacing:1px;color:#d9c49c}
+.kx-hub-card input,.kx-hub-card textarea,.kx-hub-card select{box-sizing:border-box;width:100%;min-width:0;padding:12px 13px;color:#f7f1e7;border:1px solid rgba(226,201,153,.2);border-radius:12px;background:rgba(0,0,0,.35);font:inherit;font-size:14px}
+.kx-hub-card textarea{min-height:90px;resize:vertical}
+.kx-hub-card button{padding:12px 15px;border:1px solid rgba(234,207,155,.5);border-radius:12px;color:#f7e5bf;background:linear-gradient(135deg,rgba(195,155,83,.2),rgba(255,255,255,.035));font-size:11px;letter-spacing:1px;cursor:pointer}
+.kx-hub-card button:hover{background:rgba(206,169,103,.19)}
+.kx-hub-card button:disabled{opacity:.55;cursor:wait}
+.kx-hub-output{display:none;margin-top:16px;padding:15px;border-radius:13px;background:rgba(0,0,0,.3);border:1px solid rgba(226,201,153,.15);color:#e9e2d6;font-size:14px;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere}
+.kx-hub-output.active{display:block}
+.kx-hub-output p{margin:0 0 12px}
+.kx-hub-output p:last-child{margin-bottom:0}
+.kx-hub-output h4{margin:0 0 12px;color:#f5dfad;font-size:16px}
+.kx-hub-output strong{color:#f5dfad}
+.kx-hub-output ul,.kx-hub-output ol{padding-left:23px;margin:8px 0 14px}
+.kx-hub-output li{margin:5px 0}
+.kx-hub-output code{overflow-wrap:anywhere}
+
+.kx-hub-status{min-height:18px;font-size:12px;color:#d9c49c;overflow-wrap:anywhere}
+@media(max-width:700px){#kryrex-ai-hub{padding:52px 14px}.kx-hub-grid{grid-template-columns:1fr}.kx-hub-card{padding:19px;border-radius:19px}}
+
 </style>
+
+<style id="kx-timetable-visibility-fix">
+#kxTimetableStatus {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: #dfc38c !important;
+  margin-top: 16px !important;
+}
+#kxTimetableOutput {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  color: #f5eddb !important;
+  background: rgba(255,255,255,0.055) !important;
+  border: 1px solid rgba(223,195,140,0.3) !important;
+  border-radius: 16px !important;
+  padding: 20px !important;
+  margin-top: 16px !important;
+  min-height: 24px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+</style>
+
 </head>
 
 <body>
@@ -225,6 +395,137 @@ footer{position:relative;z-index:1;display:flex;justify-content:space-between;al
 <div id="plannerStatus" role="status"></div>
 <div id="plannerResult"></div>
 </div>
+</section>
+
+
+
+<section id="kryrex-timetable">
+  <header class="kx-hub-head">
+    <small>KRYREX INTELLIGENCE / STUDY TOOLS</small>
+    <h2>Your time.<br><span style="color:#dfc38c">Strategically planned.</span></h2>
+    <p>Create a dedicated AI timetable without mixing it into your doubt-solving answers.</p>
+  </header>
+  <div class="kx-hub-grid">
+    <article class="kx-hub-card">
+      <div class="kx-hub-tag">06 / TIMETABLE CREATOR</div>
+      <h3>Study Timetable Creator</h3>
+      <p>Get a practical schedule with study sessions, breaks and revision.</p>
+      <form id="kxTimetableForm">
+        <label>SUBJECTS</label>
+        <input name="subject" required placeholder="Python, Maths, Physics...">
+        <label>AVAILABLE HOURS PER DAY</label>
+        <input name="hours" type="number" min="1" max="16" value="2" required>
+        <label>STUDY START TIME</label>
+        <input name="startTime" type="time" value="17:00" required>
+        <label>EXAM DATE (OPTIONAL)</label>
+        <input name="examDate" type="date">
+        <label>TOPICS OR TASKS TO COMPLETE</label>
+        <textarea name="tasks" required placeholder="List your chapters, topics or tasks..."></textarea>
+        <button id="kxTimetableSubmit" type="submit">CREATE MY TIMETABLE ↗</button>
+      </form>
+      <div id="kxTimetableStatus" class="kx-hub-status" aria-live="polite"></div>
+      <div id="kxTimetableOutput" class="kx-hub-output" style="white-space:pre-wrap"></div>
+    </article>
+  </div>
+</section>
+<script>
+(() => {
+  const form = document.getElementById('kxTimetableForm');
+  if (!form) return;
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+    const button = document.getElementById('kxTimetableSubmit');
+    const status = document.getElementById('kxTimetableStatus');
+    const output = document.getElementById('kxTimetableOutput');
+
+    button.disabled = true;
+    button.textContent = 'CREATING...';
+    status.textContent = 'KRYREX AI is building your timetable...';
+    output.textContent = '';
+
+    try {
+      const response = await fetch('/api/timetable', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      });
+      const result = await response.json();
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || 'Could not create timetable.');
+      }
+      output.textContent = result.answer;
+      output.style.setProperty('display', 'block', 'important');
+      output.style.setProperty('visibility', 'visible', 'important');
+      output.style.setProperty('opacity', '1', 'important');
+      status.textContent = 'YOUR TIMETABLE IS READY';
+      setTimeout(() => output.scrollIntoView({behavior: 'smooth', block: 'start'}), 100);
+    } catch (error) {
+      status.textContent = error.message || 'Request failed. Please try again.';
+    } finally {
+      button.disabled = false;
+      button.textContent = 'CREATE MY TIMETABLE ↗';
+    }
+  });
+})();
+</script>
+
+<section id="kryrex-ai-hub">
+  <header class="kx-hub-head">
+    <small>KRYREX INTELLIGENCE / 02</small>
+    <h2>Your next level.<br><span style="color:#dfc38c">Powered by AI.</span></h2>
+    <p>Understand your progress, recover missed study sessions and learn with a personal AI tutor.</p>
+  </header>
+  <div class="kx-hub-grid">
+    <article class="kx-hub-card">
+      <div class="kx-hub-tag">01 / PERFORMANCE</div><h3>Student Analysis</h3>
+      <p>Get personalized feedback from your subject scores.</p>
+      <form data-api="/api/analyze" data-kind="analysis">
+        <label>SUBJECT SCORES — ONE PER LINE</label>
+        <textarea name="subjects" required placeholder="Maths: 45&#10;Physics: 68&#10;Chemistry: 72"></textarea>
+        <button type="submit">ANALYZE MY PROGRESS ↗</button>
+      </form><div class="kx-hub-status" aria-live="polite"></div><div class="kx-hub-output"></div>
+    </article>
+    <article class="kx-hub-card">
+      <div class="kx-hub-tag">02 / PRIORITIES</div><h3>Weak Topic Detection</h3>
+      <p>Find which topics need more revision using your scores.</p>
+      <form data-api="/api/weak-topics" data-kind="weak">
+        <label>TOPIC, SCORE OUT OF 100, CONFIDENCE OUT OF 5</label>
+        <textarea name="topics" required placeholder="Algebra, 40, 2&#10;Mechanics, 65, 3&#10;Optics, 80, 4"></textarea>
+        <button type="submit">FIND MY WEAK TOPICS ↗</button>
+      </form><div class="kx-hub-status" aria-live="polite"></div><div class="kx-hub-output"></div>
+    </article>
+    <article class="kx-hub-card">
+      <div class="kx-hub-tag">03 / RECOVERY PLAN</div><h3>Smart Rescheduling</h3>
+      <p>Build a revised schedule around unfinished tasks and your available time.</p>
+      <form data-api="/api/reschedule" data-kind="reschedule">
+        <label>EXAM DATE</label><input type="date" name="examDate" required>
+        <label>STUDY HOURS PER DAY</label><input type="number" name="hours" min="1" max="16" value="2" required>
+        <label>ALL STUDY TASKS — ONE PER LINE</label><textarea name="tasks" required placeholder="Finish algebra chapter&#10;Practice physics numericals&#10;Revise chemistry notes"></textarea>
+        <label>MISSED TASKS — ONE PER LINE</label><textarea name="missed" placeholder="Tasks not completed yet"></textarea>
+        <button type="submit">RESCHEDULE MY STUDY ↗</button>
+      </form><div class="kx-hub-status" aria-live="polite"></div><div class="kx-hub-output"></div>
+    </article>
+    <article class="kx-hub-card">
+      <div class="kx-hub-tag">04 / EXAM READINESS</div><h3>Exam Countdown</h3>
+      <p>Calculate the days remaining until your exam.</p>
+      <form data-api="/api/exam-countdown" data-kind="countdown">
+        <label>EXAM DATE</label><input type="date" name="examDate" required>
+        <button type="submit">CALCULATE DAYS LEFT ↗</button>
+      </form><div class="kx-hub-status" aria-live="polite"></div><div class="kx-hub-output"></div>
+    </article>
+    <article class="kx-hub-card">
+      <div class="kx-hub-tag">05 / PERSONAL TUTOR</div><h3>AI Doubt Solver</h3>
+      <p>Ask a question and receive a step-by-step explanation.</p>
+      <form data-api="/api/doubt" data-kind="doubt">
+        <label>SUBJECT</label><input name="subject" placeholder="Maths, Physics, Python..." required>
+        <label>YOUR LEVEL</label><select name="level"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select>
+        <label>YOUR QUESTION</label><textarea name="question" required placeholder="Explain this concept in simple steps..."></textarea>
+        <button type="submit">ASK KRYREX AI ↗</button>
+      </form><div class="kx-hub-status" aria-live="polite"></div><div class="kx-hub-output"></div>
+    </article>
+  </div>
 </section>
 
 <section class="final" id="contact">
@@ -500,6 +801,16 @@ function renderChecklist(plan) {
   let topicIndex = 0;
   let audio;
 
+  const progressKey = 'kx-progress-v1:' + schedule
+    .map(item => `${item.time} ${item.text}`).join('|');
+  let savedProgress = [];
+  try {
+    savedProgress = JSON.parse(localStorage.getItem(progressKey) || '[]');
+    if (!Array.isArray(savedProgress)) savedProgress = [];
+  } catch (_) {
+    savedProgress = [];
+  }
+
   function tone(freq, duration) {
     if (!soundOn) return;
     try {
@@ -518,14 +829,20 @@ function renderChecklist(plan) {
     } catch (_) {}
   }
 
-  function updateProgress() {
+  function updateProgress(showMission = true) {
     const boxes = tasks.querySelectorAll('input');
+    try {
+      localStorage.setItem(
+        progressKey,
+        JSON.stringify(Array.from(boxes, box => box.checked))
+      );
+    } catch (_) {}
     const done = tasks.querySelectorAll('input:checked').length;
     progress.textContent = `${done} of ${boxes.length} completed`;
     fill.style.width = `${boxes.length ? done / boxes.length * 100 : 0}%`;
     const allBoxes = tasks.querySelectorAll('input[type="checkbox"]');
     const allDone = allBoxes.length > 0 && tasks.querySelectorAll('input[type="checkbox"]:checked').length === allBoxes.length;
-    if (allDone && !tasks.dataset.missionShown) {
+    if (showMission && allDone && !tasks.dataset.missionShown) {
       tasks.dataset.missionShown = '1';
       if (window.kryrexMissionComplete) window.kryrexMissionComplete();
     }
@@ -537,6 +854,7 @@ function renderChecklist(plan) {
     label.className = 'kx-task';
     const box = document.createElement('input');
     box.type = 'checkbox';
+    box.checked = savedProgress[index] === true;
     box.addEventListener('change', () => {
       updateProgress();
       tone(box.checked ? 740 : 420, 0.12);
@@ -550,6 +868,8 @@ function renderChecklist(plan) {
     label.append(box, text);
     tasks.appendChild(label);
   });
+
+  updateProgress(false);
 
   function showTopic() {
     const topic = topics[topicIndex];
@@ -656,6 +976,141 @@ button.textContent = 'GENERATE MY AI STUDY PLAN ↗';
    overlay.appendChild(q);setTimeout(()=>q.remove(),1600);
   }
  };
+})();
+</script>
+
+
+<script>
+(function(){
+  const hub = document.getElementById("kryrex-ai-hub");
+  if (!hub || hub.dataset.ready) return;
+  hub.dataset.ready = "1";
+
+  function lines(value) {
+    return String(value || "").split(/\r?\n/).map(x => x.trim()).filter(Boolean);
+  }
+
+  function renderMarkdown(value) {
+    const escapeHTML = text => String(text)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+
+    const safe = escapeHTML(value);
+    return safe.split(/\n{2,}/).map(block => {
+      const trimmed = block.trim();
+      if (!trimmed) return "";
+
+      const heading = trimmed.match(/^#{1,3}\s+(.+)$/);
+      if (heading) {
+        const content = heading[1].replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+        return "<h4>" + content + "</h4>";
+      }
+
+      const rows = trimmed.split("\n");
+      if (rows.every(line => /^\s*[-*]\s+/.test(line))) {
+        return "<ul>" + rows.map(line =>
+          "<li>" + line.replace(/^\s*[-*]\s+/, "")
+            .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+            .replace(/\*(.+?)\*/g, "<em>$1</em>") + "</li>"
+        ).join("") + "</ul>";
+      }
+
+      if (rows.every(line => /^\s*\d+[.)]\s+/.test(line))) {
+        return "<ol>" + rows.map(line =>
+          "<li>" + line.replace(/^\s*\d+[.)]\s+/, "")
+            .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+            .replace(/\*(.+?)\*/g, "<em>$1</em>") + "</li>"
+        ).join("") + "</ol>";
+      }
+
+      return "<p>" + trimmed
+        .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+        .replace(/\*(.+?)\*/g, "<em>$1</em>")
+        .replace(/\n/g, "<br>") + "</p>";
+    }).join("");
+  }
+  function records(value, type) {
+    return lines(value).map(line => {
+      const parts = line.split(/[:,]/).map(x => x.trim());
+      if (type === "analysis") {
+        return { subject: parts[0], score: parts.length > 1 && parts[1] !== "" ? Number(parts[1]) : null };
+      }
+      return {
+        topic: parts[0],
+        score: parts.length > 1 && parts[1] !== "" ? Number(parts[1]) : null,
+        confidence: parts.length > 2 && parts[2] !== "" ? Number(parts[2]) : null
+      };
+    });
+  }
+  hub.querySelectorAll("form[data-api]").forEach(form => {
+    form.addEventListener("submit", async event => {
+      event.preventDefault();
+      const card = form.closest(".kx-hub-card");
+      const status = card.querySelector(".kx-hub-status");
+      const output = card.querySelector(".kx-hub-output");
+      const button = form.querySelector('button[type="submit"]');
+      const data = new FormData(form);
+      let payload;
+      const kind = form.dataset.kind;
+
+      if (kind === "analysis") {
+        const subjects = records(data.get("subjects"), "analysis");
+        if (subjects.some(x => !x.subject || (x.score !== null && (!Number.isFinite(x.score) || x.score < 0 || x.score > 100)))) {
+          status.textContent = "Use format: Subject: score out of 100.";
+          return;
+        }
+        payload = { student: {}, subjects };
+      } else if (kind === "weak") {
+        const topics = records(data.get("topics"), "weak");
+        if (topics.some(x => !x.topic || (x.score !== null && (!Number.isFinite(x.score) || x.score < 0 || x.score > 100)) || (x.confidence !== null && (!Number.isFinite(x.confidence) || x.confidence < 1 || x.confidence > 5)))) {
+          status.textContent = "Use: Topic, score out of 100, confidence from 1 to 5.";
+          return;
+        }
+        payload = { topics };
+      } else if (kind === "reschedule") {
+        const tasks = lines(data.get("tasks")).map(title => ({ title, status: "pending" }));
+        const missedTasks = lines(data.get("missed")).map(title => ({ title, status: "missed" }));
+        payload = { examDate: data.get("examDate"), hoursPerDay: Number(data.get("hours")), tasks, missedTasks };
+      } else if (kind === "countdown") {
+        payload = { examDate: data.get("examDate") };
+      } else {
+        payload = { subject: data.get("subject"), level: data.get("level"), question: data.get("question") };
+      }
+
+      button.disabled = true;
+      status.textContent = "KRYREX AI is working...";
+      output.classList.remove("active");
+      try {
+        const response = await fetch(form.dataset.api, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const result = await response.json();
+        if (!response.ok || !result.success) throw new Error(result.error || "Request failed.");
+        let text;
+        if (kind === "countdown") {
+          text = result.daysRemaining < 0
+            ? "Your exam date has passed. Choose a future date to plan ahead."
+            : result.daysRemaining === 0
+              ? "Your exam is today. Focus on light revision and rest."
+              : result.daysRemaining + " days remaining until your exam.";
+        } else {
+          text = result.analysis || result.result || result.schedule || result.answer || "No response received.";
+        }
+        output.innerHTML = renderMarkdown(text);
+        output.classList.add("active");
+        status.textContent = "COMPLETE";
+      } catch (error) {
+        status.textContent = error.message + (error instanceof TypeError ? " Check that the KRYREX server is running." : "");
+      } finally {
+        button.disabled = false;
+      }
+    });
+  });
 })();
 </script>
 
